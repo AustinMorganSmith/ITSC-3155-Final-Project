@@ -1,0 +1,134 @@
+/*Reset padding to make navigation pane aligned to left*/
+* {
+    padding:0;
+    margin: 0;
+}
+
+/*Formatting body*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/*Centering budget hawk header*/
+h1{
+    text-align: center;
+}
+
+/*Formatting paragraphs*/
+ p{
+     /*padding-left: 250px;
+     padding-right: 250px;*/
+     margin: 35px;
+ }
+
+ /*Formatting navigation id*/
+ #navigation {
+     padding-left: 250px;
+     padding-right: 250px;
+
+ }
+
+ /*Formatting list*/
+ nav ul {
+     height: 45px;
+     width: 600px;
+ }
+
+ /*List items*/
+ nav ul li {
+     list-style-type: none;
+     width: 150px;
+     float: right;
+     text-align: center;
+ }
+
+ /*List items anchors*/
+li a {
+    text-decoration: none;
+    color: white;
+    line-height: 43px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+/*Hovering over items in navigation*/
+li a:hover {
+    color: darkorange;
+}
+
+/*Formatting background color and height of navigation pane*/
+ nav {
+     background-color: #3b3b3b;
+     height: 45px;
+ }
+
+/*Formatting and putting border around graph div*/
+ #graph {
+     border: 2px solid black;
+     margin-left: 250px;
+     margin-right: 250px;
+     margin-bottom: 10px;
+ }
+
+ /*Center the graph header*/
+ h2 {
+     text-align: center;
+ }
+
+ /*Formatting and putting border around image*/
+ #img1 {
+     width: 1016px;
+ }
+
+ /*Nav bar was extended on the pages. This fixes it*/
+ #pages {
+     padding-right: 16px;
+ }
+
+ #header {
+     color: white;
+     margin-top: 8px;
+     margin-left: 50px;
+}
+
+ .flex {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ h1 a {
+     text-decoration: none;
+     color: white;
+ }
+
+ footer {
+     text-align: left;
+     margin-left: 215px;
+ }
+
+ #footer {
+     text-align: left;
+     margin-left: 215px;
+     position: absolute;
+     bottom: 0;
+ }
+
+ #info {
+     background-color: white;
+     border: 2px solid black;
+     margin-left: 250px;
+     margin-right: 250px;
+     margin-bottom: 10px;
+ }
+
+ #information {
+     border: 1px solid black;
+     margin: 30px;
+     color: black;
+     font-style: normal;
+ }
+
+
+
