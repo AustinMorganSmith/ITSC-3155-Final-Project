@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <!-- BootStrap Style sheets-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!--Animate css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom javascript-->
+    <script src=""></script>
+
+    <!-- Custom style sheet-->
+    <link rel="stylesheet" href=""/>
+
+</head>
+<body class="">
+
+<nav class="navbar navbar-expand sticky-top bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link">Chart 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Chart 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Chart 3</a>
+        </li>
+    </ul>
+</nav>
+
+<!--Generates the chart but is laggy when editing-->
+<main class="">
+    <div class="container">
+        <h2>Test form</h2>
+        <form>
+            <label>
+                <select name="cityName" class="custom-select">
+                    <option selected value="0">Pick A City Name</option>
+                    <option value="0">AZ: Mesa</option>
+                    <option value="1">AZ: Phoenix</option>
+                </select>
+                <button type="submit" class="btn btn-outline-dark mt-2">Submit</button>
+
+            </label>
+        </form>
+        <div class="chart1">
+
+            <div id="test">
+
+            </div>
+            <p class="text-center mb-4">
+                Chart 1
+            </p>
+        </div>
+        <div class="chart2">
+            <img class="test w-100" src="test.PNG" alt="">
+            <p class="text-center mb-4">
+                Chart 2
+            </p>
+        </div>
+        <div class="chart3">
+            <img class="test w-100" src="test.PNG" alt="">
+            <p class="text-center mb-4">
+                Chart 3
+            </p>
+        </div>
+    </div>
+</main>
+
+
+</body>
+</html>
+<script>
+    $(function(){
+        $("#test").load("multilinechart - Copy.html");
+    });
+</script>
