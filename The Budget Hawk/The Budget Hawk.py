@@ -28,7 +28,7 @@ cityNames = ["AZ: Mesa", "AZ: Phoenix", "AZ: Tucson", "CA: Oakland", "CA: Fresno
              "OH: Cleveland", "OH: Columbus", "OK: Oklahoma", "OK: Tulsa", "OR: Portland", "PA: Philadelphia",
              "PA: Pittsburgh", "TN: Nashville", "TN: Memphis", "TX: El Paso", "TX: Arlington", "TX: Austin",
              "TX: Dallas", "TX: Houston", "TX: San Antonio", "UT: Salt Lake City", "VA: Virginia Beach", "WA: Seattle",
-             "WI: Milwaukee"]
+             "WI: Milwaukee", "National"]
 
 # Multi Line Chart
 multiline_df = df1[df1['city_name'] == cityNames[0]]
@@ -123,7 +123,8 @@ app.layout = html.Div(children=[
             {'label': cityNames[52], 'value': cityNames[52]},
             {'label': cityNames[53], 'value': cityNames[53]},
             {'label': cityNames[54], 'value': cityNames[54]},
-            {'label': cityNames[55], 'value': cityNames[55]}
+            {'label': cityNames[55], 'value': cityNames[55]},
+            {'label': cityNames[56], 'value': cityNames[56]}
         ],
         value=cityNames[0]
     )
