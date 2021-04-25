@@ -69,7 +69,6 @@ trace6_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_p
                                name='Health')
 trace7_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_housing'], mode='lines',
                                name='Housing')
-
 data_multiline2 = [trace1_multiline2, trace2_multiline2, trace3_multiline2, trace4_multiline2,
                    trace5_multiline2, trace6_multiline2, trace7_multiline2]
 
@@ -122,8 +121,8 @@ introContent = dbc.Container(
             "deemed unnecessary or excessive in how they protected communities. The ways in which police have handled "
             "past cases varies, but it heavily relies not only on the personnel they employ, but also the budget "
             "given to them. Higher budgets and costs are mainly for those departments who are in high crime-ridden "
-            "areas where there is a huge need for resources for police officers to use to protect the general public. "
-            , style={"padding": "10px"}
+            "areas where there is a huge need for resources for police officers to use to protect the general public. ",
+            style={"padding": "10px"}
         ),
         html.P(
             "This raises the question of how much is actually necessary for police departments to be able to "
@@ -132,8 +131,8 @@ introContent = dbc.Container(
             "back down? How can we tell how the budget should be adjusted when the crime rates seem to dwindle? There "
             "is a need for regulation and efficiency in the budgets provided to police departments, "
             "so the departments can protect the community without putting a strain on the rest of the government "
-            "budgets needed for regulation of the community. "
-            , style={"padding-right": "10px", "padding-left": "10px"}
+            "budgets needed for regulation of the community. ",
+            style={"padding-right": "10px", "padding-left": "10px"}
         ),
     ],
     style={"padding-top": "40px", "padding-bottom": "40px", "text-align": "center"},
@@ -358,6 +357,35 @@ def update_figure(selected_city_name):
             'layout': go.Layout(title='Police Department Funding and Crime Rates From 1977-2015 ' + selected_city_name,
                                 xaxis={'title': 'Year'},
                                 yaxis={'title': 'Per 100k population'})}
+
+
+# Group2 callback
+@app.callback(Output('graph2', 'figure'),
+              [Input('select-city_name2', 'value')])
+def update_figure(selected_city_name2):
+    new_multiline_df = df1[df1['city_name'] == selected_city_name2]
+
+    new_trace1_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_police'],
+                                       mode='lines', name='Police department')
+    new_trace2_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_fire'],
+                                       mode='lines', name='Fire department')
+    new_trace3_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_education'],
+                                       mode='lines', name='Education department')
+    new_trace4_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_welfare'],
+                                       mode='lines', name='Public Welfare')
+    new_trace5_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_hospital'],
+                                       mode='lines', name='Hospital')
+    new_trace6_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_health'],
+                                       mode='lines', name='Health')
+    new_trace7_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_housing'],
+                                       mode='lines', name='Housing')
+    new_data_multiline2 = [new_trace1_multiline2, new_trace2_multiline2, new_trace3_multiline2, new_trace4_multiline2,
+                           new_trace5_multiline2, new_trace6_multiline2, new_trace7_multiline2]
+    return {'data': new_data_multiline2,
+            'layout': go.Layout(title='Police Department Funding vs Other Service From 1977-2015 ' +
+                                      selected_city_name2,
+                                xaxis={'title': 'Year'},
+                                yaxis={'title': 'Per Capita Nominal'})}
 
 
 if __name__ == '__main__':
