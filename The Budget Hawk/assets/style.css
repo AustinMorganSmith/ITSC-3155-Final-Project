@@ -19,3 +19,17 @@ a:hover:before{
 Not working like I want it to, but I'll keep it in because it looks nice and adds
 some extra interactiveness - Austin
  */
+/* theme red #d9230f */
+body{
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+h3{
+    letter-spacing: .1em;
+}
+/*Changes dropdown menu item on hover */
+.VirtualizedSelectFocusedOption {
+    font-size: 18px;
+    color: black;
+    letter-spacing: .1em;
+}
