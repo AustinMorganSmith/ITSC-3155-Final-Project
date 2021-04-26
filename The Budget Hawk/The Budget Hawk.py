@@ -60,7 +60,7 @@ trace1_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_p
 trace2_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_fire'], mode='lines',
                                name='Fire department')
 trace3_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_education'], mode='lines',
-                               name='Education department')
+                               name='Education')
 trace4_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_welfare'], mode='lines',
                                name='Public Welfare')
 trace5_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_hospital'], mode='lines',
@@ -75,6 +75,7 @@ data_multiline2 = [trace1_multiline2, trace2_multiline2, trace3_multiline2, trac
 # Layout
 app.title = "The Budget Hawk"  # Names the web page in the browser to "The Budget Hawk"
 
+# creates content for web page
 # creates a navbar on top of the page
 navbar = dbc.Navbar(
     [
@@ -142,7 +143,8 @@ introContent = dbc.Container(
 mainContent = dbc.Container(children=[
     html.Hr(),  # top border
     # h3 header after border
-    html.H3("The Budget Hawk's Police Department and Crime Rates Tracker", style={'color': '#d9230f'}),
+    html.H3("The Budget Hawk's Police Department and Crime Rates Tracker",
+            style={'color': '#d9230f', "padding": "10px"}),
     html.Div(
         'This multiline chart tracks police department funding, violent crimes, homicides, rapes, robberies, and '
         'aggregated assaults reports for the respective city.'),
@@ -227,7 +229,8 @@ mainContent = dbc.Container(children=[
     # top border
     html.Hr(),
     # h3 header after border
-    html.H3("The Budget Hawk's Police Department Funding vs Other Services Tracker", style={'color': '#d9230f'}),
+    html.H3("The Budget Hawk's Police Department Funding vs Other Services Tracker",
+            style={'color': '#d9230f', "padding": "10px"}),
     html.Div(
         'This multiline chart tracks police department, fire department, education, public welfare, '
         'hospital, health, and housing funding for the respective city.'),
@@ -310,17 +313,41 @@ mainContent = dbc.Container(children=[
 # About Development Team
 footContent = dbc.Container(children=[
     html.Hr(),
+    html.H3("About The Development Team",
+            style={'color': '#d9230f', "padding": "10px"}),
     html.P(
-        "Statements"
-    ),
-    html.P(
-        "Designed by: Austin Smith, Jack Hamilton, Kevin Hudson, Kylee Mucher"
+        ["Dataset Sources:",
+         html.Br(),
+         html.Br(),
+         dbc.NavItem(dbc.NavLink("TheMarshallProject crime numbers for US cities from 1975-2015",
+                                 href="https://github.com/themarshallproject/city-crime/blob/master/data"
+                                      "/ucr_crime_1975_2015.csv")),
+         "This source is the 2017 crimes reports in the United States of America directly from TheMarshallProject "
+         "which pulled the numbers from the FBI. This source when paired with the fiscal spending of police "
+         "departments in 2017 illustrates that police department funding increases with no correlation to the crime "
+         "rates reported by the FBI.",
+         html.Br(),
+         html.Br(),
+         dbc.NavItem(dbc.NavLink("FiSC database for police spending for US cities from 1977-2017",
+                                 href="https://www.lincolninst.edu/research-data/data-toolkits/fiscally-standardized"
+                                      "-cities/search-database")),
+         "This source is the fiscal spending of every police department in the United States of America in 2017 from "
+         "the Lincoln Institute of Land Policy. This datasets allows our group to establish what various select "
+         "cities budgetary expenditures are for their police departments. When paired with the crime reports from the "
+         "FBI we can establish that police department funding increases regardless of the crime rates within their "
+         "policing jurisdiction.",
+         html.Br(),
+         html.Br(),
+         html.Br(),
+         html.Br(),
+         "Designed by: Austin Smith, Jack Hamilton, Kevin Hudson, Kylee Mucher"
+         ]
     )
 ],
-    style={"text-align": "center", "padding-bottom": "60px"}
+    style={"text-align": "center", "padding-bottom": "60px", "list-style": "none"}
 )
 
-# Creates the actual web page with load order of contain
+# Creates the actual web page with load order of content
 app.layout = html.Div([
     navbar,
     introContent,  # Intro for project
@@ -329,7 +356,7 @@ app.layout = html.Div([
 ])
 
 
-# callback updating the graph
+# callback updating graph 1
 @app.callback(Output('graph1', 'figure'),
               [Input('select-city_name', 'value')])
 def update_figure(selected_city_name):
@@ -359,7 +386,7 @@ def update_figure(selected_city_name):
                                 yaxis={'title': 'Per 100k population'})}
 
 
-# Group2 callback
+# Group 2 callback
 @app.callback(Output('graph2', 'figure'),
               [Input('select-city_name2', 'value')])
 def update_figure(selected_city_name2):
@@ -370,7 +397,7 @@ def update_figure(selected_city_name2):
     new_trace2_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_fire'],
                                        mode='lines', name='Fire department')
     new_trace3_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_education'],
-                                       mode='lines', name='Education department')
+                                       mode='lines', name='Education')
     new_trace4_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_welfare'],
                                        mode='lines', name='Public Welfare')
     new_trace5_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_hospital'],
