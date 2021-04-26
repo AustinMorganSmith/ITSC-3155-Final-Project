@@ -1,0 +1,21 @@
+a.nav-link:before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:1px;
+    background-color: black;
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+}
+a:hover:before{
+    width:100%;
+    transform: scaleX(1);
+}
+/*
+**Should underline the nav links when hover but underlines entire navbar**
+
+Not working like I want it to, but I'll keep it in because it looks nice and adds
+some extra interactiveness - Austin
+ */
