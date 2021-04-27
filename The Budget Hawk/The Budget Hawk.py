@@ -99,7 +99,7 @@ navbar = dbc.Navbar(
                                             external_link=True)),
                     dbc.NavItem(dbc.NavLink("Police Department Funding vs Other Services", href="#Tracker2",
                                             external_link=True)),
-                    dbc.NavItem(dbc.NavLink("About The Development Team", href="#Team",
+                    dbc.NavItem(dbc.NavLink("Dataset Sources", href="#Team",
                                             external_link=True)),
                 ],
                 align="center",
@@ -118,7 +118,7 @@ navbar = dbc.Navbar(
 # creates intro written by Kylee in the proposal explaining the situation
 introContent = dbc.Container(
     children=[
-        html.H3("The Budget Hawk A Simplistic Police Department Funding Tracker", style={"color": "#d9230f"}),
+        html.H3("The Budget Hawk: A Simplistic Police Department Funding Tracker", style={"color": "#d9230f"}),
         html.P(
             "Recently the media has been plagued with reactions and analyses of police actions against suspects and "
             "other civilians. The outrage by the public called for the defunding of police departments as they were "
@@ -146,10 +146,11 @@ introContent = dbc.Container(
 mainContent = dbc.Container(children=[
     html.Hr(),  # top border
     # h3 header after border
-    html.H3("The Budget Hawk's Police Department and Crime Rates Tracker",
+    html.H3("Police Department and Crime Rates Tracker",
             style={'color': '#d9230f', "padding": "10px"}, id="Tracker1"),
     html.Div(
-        'This multiline chart tracks police department funding, violent crimes, homicides, rapes, robberies, and '
+        'This multiline chart tracks police department funding and violent crimes, which consist of homicides, rapes, '
+        'robberies, and '
         'aggregated assaults reports for the respective city.'),
     dcc.Graph(id='graph1',
               figure={
@@ -232,7 +233,7 @@ mainContent = dbc.Container(children=[
     # top border
     html.Hr(),
     # h3 header after border
-    html.H3("The Budget Hawk's Police Department Funding vs Other Services Tracker",
+    html.H3("Police Department Funding vs Other Services Tracker",
             style={'color': '#d9230f', "padding": "10px"}, id="Tracker2"),
     html.Div(
         'This multiline chart tracks police department, fire department, education, public welfare, '
@@ -316,10 +317,10 @@ mainContent = dbc.Container(children=[
 # About Development Team
 footContent = dbc.Container(children=[
     html.Hr(),
-    html.H3("About The Development Team",
+    html.H3("Dataset Sources:",
             style={'color': '#d9230f', "padding": "10px"},  id="Team"),
     html.P(
-        ["Dataset Sources:",
+        ["These are the sources utilized for the graph creation:",
          html.Br(),
          html.Br(),
          dbc.NavItem(dbc.NavLink("TheMarshallProject crime numbers for US cities from 1975-2015",
