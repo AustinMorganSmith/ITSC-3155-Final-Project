@@ -94,10 +94,13 @@ navbar = dbc.Navbar(
         ),
         html.Div(
             dbc.Row(
-                [
-                    dbc.NavItem(dbc.NavLink("Police Department Funding and Crime Rates", href="#")),
-                    dbc.NavItem(dbc.NavLink("Police Department Funding vs Other Services", href="#")),
-                    dbc.NavItem(dbc.NavLink("About Development Team", href="#")),
+                [  # Scrolls to respective chart on web page
+                    dbc.NavItem(dbc.NavLink("Police Department Funding and Crime Rates", href="#Tracker1",
+                                            external_link=True)),
+                    dbc.NavItem(dbc.NavLink("Police Department Funding vs Other Services", href="#Tracker2",
+                                            external_link=True)),
+                    dbc.NavItem(dbc.NavLink("About Development Team", href="#Team",
+                                            external_link=True)),
                 ],
                 align="center",
                 style={"list-style": "none"}
@@ -144,7 +147,7 @@ mainContent = dbc.Container(children=[
     html.Hr(),  # top border
     # h3 header after border
     html.H3("The Budget Hawk's Police Department and Crime Rates Tracker",
-            style={'color': '#d9230f', "padding": "10px"}),
+            style={'color': '#d9230f', "padding": "10px"}, id="Tracker1"),
     html.Div(
         'This multiline chart tracks police department funding, violent crimes, homicides, rapes, robberies, and '
         'aggregated assaults reports for the respective city.'),
@@ -230,7 +233,7 @@ mainContent = dbc.Container(children=[
     html.Hr(),
     # h3 header after border
     html.H3("The Budget Hawk's Police Department Funding vs Other Services Tracker",
-            style={'color': '#d9230f', "padding": "10px"}),
+            style={'color': '#d9230f', "padding": "10px"}, id="Tracker2"),
     html.Div(
         'This multiline chart tracks police department, fire department, education, public welfare, '
         'hospital, health, and housing funding for the respective city.'),
@@ -314,7 +317,7 @@ mainContent = dbc.Container(children=[
 footContent = dbc.Container(children=[
     html.Hr(),
     html.H3("About The Development Team",
-            style={'color': '#d9230f', "padding": "10px"}),
+            style={'color': '#d9230f', "padding": "10px"},  id="Team"),
     html.P(
         ["Dataset Sources:",
          html.Br(),
