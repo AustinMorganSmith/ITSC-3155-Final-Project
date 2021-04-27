@@ -99,7 +99,7 @@ navbar = dbc.Navbar(
                                             external_link=True)),
                     dbc.NavItem(dbc.NavLink("Police Department Funding vs Other Services", href="#Tracker2",
                                             external_link=True)),
-                    dbc.NavItem(dbc.NavLink("About Development Team", href="#Team",
+                    dbc.NavItem(dbc.NavLink("About The Development Team", href="#Team",
                                             external_link=True)),
                 ],
                 align="center",
@@ -136,10 +136,10 @@ introContent = dbc.Container(
             "is a need for regulation and efficiency in the budgets provided to police departments, "
             "so the departments can protect the community without putting a strain on the rest of the government "
             "budgets needed for regulation of the community. ",
-            style={"padding-right": "10px", "padding-left": "10px"}
+            style={"padding": " 0px 10px"}
         ),
     ],
-    style={"padding-top": "40px", "padding-bottom": "40px", "text-align": "center"},
+    style={"padding": "40px 0px", "text-align": "center"},
 )
 
 # Page main content. Contains the graphs and other things
@@ -347,7 +347,7 @@ footContent = dbc.Container(children=[
          ]
     )
 ],
-    style={"text-align": "center", "padding-bottom": "60px", "list-style": "none"}
+    style={"text-align": "center", "padding": "0px 10px 60px", "list-style": "none"}
 )
 
 # Creates the actual web page with load order of content
