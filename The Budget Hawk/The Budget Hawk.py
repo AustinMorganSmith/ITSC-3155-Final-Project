@@ -10,7 +10,7 @@ from dash.dependencies import Input, Output
 
 # Police department fiscal spending from 1977-2017 but trimmed to 1977-2015
 df1 = pd.read_csv('Datasets/Police dep fisc_full_dataset_2017_update.csv')
-df1.groupby(['department_name', 'year', 'Nominal_Total_100k', 'ORI'])
+df1.groupby(['department_name', 'year', 'Real_Total_100k', 'ORI'])
 df1.reset_index(inplace=True)
 
 # Crime rates for cities trimmed to match the police department.csv
@@ -40,8 +40,8 @@ multiline_df = df1[df1['city_name'] == cityNames[0]]
 multiline_df2 = df2[df2['city_name'] == cityNames[0]]
 
 # Content for first graph Police Department and Crime Rates
-trace1_multiline = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_Total_100k'], mode='lines',
-                              name='Police department nominal')
+trace1_multiline = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_Total_100k'], mode='lines',
+                              name='Police department real')
 trace2_multiline = go.Scatter(x=multiline_df2['year'], y=multiline_df2['violent_per_100k'], mode='lines',
                               name='Violent Crimes')
 trace3_multiline = go.Scatter(x=multiline_df2['year'], y=multiline_df2['homs_per_100k'], mode='lines',
@@ -55,19 +55,19 @@ trace6_multiline = go.Scatter(x=multiline_df2['year'], y=multiline_df2['agg_ass_
 data_multiline = [trace1_multiline, trace2_multiline, trace3_multiline, trace5_multiline, trace6_multiline]
 
 # Content for 2nd Graph
-trace1_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_police'], mode='lines',
+trace1_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_per_cap_police'], mode='lines',
                                name='Police department')
-trace2_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_fire'], mode='lines',
+trace2_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_per_cap_fire'], mode='lines',
                                name='Fire department')
-trace3_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_education'], mode='lines',
+trace3_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_per_cap_education'], mode='lines',
                                name='Education')
-trace4_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_welfare'], mode='lines',
+trace4_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_per_cap_welfare'], mode='lines',
                                name='Public Welfare')
-trace5_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_hospital'], mode='lines',
+trace5_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_per_cap_hospital'], mode='lines',
                                name='Hospital')
-trace6_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_health'], mode='lines',
+trace6_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_per_cap_health'], mode='lines',
                                name='Health')
-trace7_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Nominal_per_cap_housing'], mode='lines',
+trace7_multiline2 = go.Scatter(x=multiline_df['year'], y=multiline_df['Real_per_cap_housing'], mode='lines',
                                name='Housing')
 data_multiline2 = [trace1_multiline2, trace2_multiline2, trace3_multiline2, trace4_multiline2,
                    trace5_multiline2, trace6_multiline2, trace7_multiline2]
@@ -151,7 +151,8 @@ mainContent = dbc.Container(children=[
     html.Div(
         'This multiline chart tracks police department funding and violent crimes, which consist of homicides, rapes, '
         'robberies, and '
-        'aggregated assaults reports for the respective city or on the national level.'),
+        'aggregated assaults reports for the respective city or on the national level. '
+        'A real dollar represents the actual amount of money spent adjusted for inflation.'),
     dcc.Graph(id='graph1',
               figure={
                   'data': data_multiline,
@@ -237,13 +238,14 @@ mainContent = dbc.Container(children=[
             style={'color': '#d9230f', "padding": "10px"}, id="Tracker2"),
     html.Div(
         'This multiline chart tracks police department, fire department, education, public welfare, '
-        'hospital, health, and housing funding for the respective city or on the national level.'),
+        'hospital, health, and housing funding for the respective city or on the national level. '
+        'A real dollar represents the actual amount of money spent adjusted for inflation.'),
     dcc.Graph(id='graph2',
               figure={
                   'data': data_multiline2,
                   'layout': go.Layout(
                       title='Police Department Funding vs Other Services From 1977-2015',
-                      xaxis={'title': 'Year'}, yaxis={'title': 'Nominal Dollars Per Capita'})
+                      xaxis={'title': 'Year'}, yaxis={'title': 'Real Dollars Per Capita'})
               }
               ),
     html.Div('Please select a city', style={'color': '#d9230f', 'margin': '10px'}),  # Text before dropdown
@@ -368,9 +370,9 @@ def update_figure(selected_city_name):
 
     new_multiline_df2 = df2[df2['city_name'] == selected_city_name]
 
-    new_trace1_multiline = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_Total_100k'],
+    new_trace1_multiline = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_Total_100k'],
                                       mode='lines',
-                                      name='Police Department Nominal')
+                                      name='Police Department Real')
     new_trace2_multiline = go.Scatter(x=new_multiline_df2['year'], y=new_multiline_df2['violent_per_100k'],
                                       mode='lines',
                                       name='Violent Crimes')
@@ -396,19 +398,19 @@ def update_figure(selected_city_name):
 def update_figure(selected_city_name2):
     new_multiline_df = df1[df1['city_name'] == selected_city_name2]
 
-    new_trace1_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_police'],
+    new_trace1_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_per_cap_police'],
                                        mode='lines', name='Police department')
-    new_trace2_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_fire'],
+    new_trace2_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_per_cap_fire'],
                                        mode='lines', name='Fire department')
-    new_trace3_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_education'],
+    new_trace3_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_per_cap_education'],
                                        mode='lines', name='Education')
-    new_trace4_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_welfare'],
+    new_trace4_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_per_cap_welfare'],
                                        mode='lines', name='Public Welfare')
-    new_trace5_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_hospital'],
+    new_trace5_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_per_cap_hospital'],
                                        mode='lines', name='Hospital')
-    new_trace6_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_health'],
+    new_trace6_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_per_cap_health'],
                                        mode='lines', name='Health')
-    new_trace7_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Nominal_per_cap_housing'],
+    new_trace7_multiline2 = go.Scatter(x=new_multiline_df['year'], y=new_multiline_df['Real_per_cap_housing'],
                                        mode='lines', name='Housing')
     new_data_multiline2 = [new_trace1_multiline2, new_trace2_multiline2, new_trace3_multiline2, new_trace4_multiline2,
                            new_trace5_multiline2, new_trace6_multiline2, new_trace7_multiline2]
@@ -416,7 +418,7 @@ def update_figure(selected_city_name2):
             'layout': go.Layout(title='Police Department Funding vs Other Services From 1977-2015 ' +
                                       selected_city_name2,
                                 xaxis={'title': 'Year'},
-                                yaxis={'title': 'Per Capita Nominal'})}
+                                yaxis={'title': 'Per Capita Real'})}
 
 
 if __name__ == '__main__':
