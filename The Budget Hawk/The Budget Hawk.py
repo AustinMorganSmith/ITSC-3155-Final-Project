@@ -151,7 +151,7 @@ mainContent = dbc.Container(children=[
     html.Div(
         'This multiline chart tracks police department funding and violent crimes, which consist of homicides, rapes, '
         'robberies, and '
-        'aggregated assaults reports for the respective city.'),
+        'aggregated assaults reports for the respective city or on the national level.'),
     dcc.Graph(id='graph1',
               figure={
                   'data': data_multiline,
@@ -237,7 +237,7 @@ mainContent = dbc.Container(children=[
             style={'color': '#d9230f', "padding": "10px"}, id="Tracker2"),
     html.Div(
         'This multiline chart tracks police department, fire department, education, public welfare, '
-        'hospital, health, and housing funding for the respective city.'),
+        'hospital, health, and housing funding for the respective city or on the national level.'),
     dcc.Graph(id='graph2',
               figure={
                   'data': data_multiline2,
@@ -413,7 +413,7 @@ def update_figure(selected_city_name2):
     new_data_multiline2 = [new_trace1_multiline2, new_trace2_multiline2, new_trace3_multiline2, new_trace4_multiline2,
                            new_trace5_multiline2, new_trace6_multiline2, new_trace7_multiline2]
     return {'data': new_data_multiline2,
-            'layout': go.Layout(title='Police Department Funding vs Other Service From 1977-2015 ' +
+            'layout': go.Layout(title='Police Department Funding vs Other Services From 1977-2015 ' +
                                       selected_city_name2,
                                 xaxis={'title': 'Year'},
                                 yaxis={'title': 'Per Capita Nominal'})}
