@@ -152,7 +152,9 @@ mainContent = dbc.Container(children=[
         'This multiline chart tracks police department funding and violent crimes, which consist of homicides, rapes, '
         'robberies, and '
         'aggregated assaults reports for the respective city or on the national level. '
-        'A real dollar represents the actual amount of money spent adjusted for inflation.'),
+        'A real dollar represents the actual amount of money spent adjusted for inflation. '
+        'Per 100k population represents the total real dollar amount of department funding or '
+        'number reports divided by 100,000.'),
     dcc.Graph(id='graph1',
               figure={
                   'data': data_multiline,
@@ -239,7 +241,8 @@ mainContent = dbc.Container(children=[
     html.Div(
         'This multiline chart tracks police department, fire department, education, public welfare, '
         'hospital, health, and housing funding for the respective city or on the national level. '
-        'A real dollar represents the actual amount of money spent adjusted for inflation.'),
+        'A real dollar represents the actual amount of money spent adjusted for inflation. '
+        'Per capita represents the real dollar amount per person in the respective city.'),
     dcc.Graph(id='graph2',
               figure={
                   'data': data_multiline2,
